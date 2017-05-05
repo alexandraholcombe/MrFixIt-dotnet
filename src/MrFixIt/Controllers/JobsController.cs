@@ -44,12 +44,13 @@ namespace MrFixIt.Controllers
 
         //adds worker to local job object, saves changes to db
         [HttpPost]
-        public IActionResult Claim(Job job)
+        public IActionResult Claim(int id, string title)
         {
-            job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
-            db.Entry(job).State = EntityState.Modified;
+            Job thisJob = db.Jobs.FirstOrDefault(j => j.JobId == id);
+            thisJob.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
+            db.Entry(thisJob).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Content("");
         }
     }
 }
