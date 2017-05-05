@@ -13,7 +13,12 @@
         </ul>
         @if (Job.Worker == null)
         {
-        <li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>
+        @*<li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>*@
+            <div class="unclaimed" id= @Job.JobId >
+
+                <p>This job is unclaimed.</p>
+                <button class="btn btn-danger claim-job" data-request-url='@Url.Action("Claim", "Jobs", new { id = Job.JobId } )'>Claim This Job</button>
+            </div>
         }
         else
         {
