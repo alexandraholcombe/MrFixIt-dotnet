@@ -3,6 +3,22 @@
     color: navy;
 }
 
+/*NAVBAR*/
+.navbar {
+    margin-bottom: 0;
+}
+
+/*HOME PAGE*/
+.jumbotron {
+    margin: 0;
+    margin-top: -20px;
+    background-image: url(https://images.pexels.com/photos/172133/pexels-photo-172133.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    min-height: 400px;
+}
+
 /*LOGIN PAGE*/
 .form-box {
     width: 50%;
