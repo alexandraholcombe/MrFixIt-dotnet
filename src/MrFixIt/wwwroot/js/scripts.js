@@ -44,9 +44,24 @@ $(document).ready(function () {
             dataType: 'json',
             data: $(this).serialize(),
             url: $(this).data('url-action'),
+            success: function (result) {                
+                $('#' + currentId + ' .job-status').load(location.href + ' #' + currentId + ' .job-status');
+            }
+        })
+    })
+
+    //submits IsComplete to db
+    $(".mark-complete-form").submit(function (e) {
+        e.preventDefault();
+        debugger;
+        var currentId = $(this).parent().parent().attr('id');
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: $(this).serialize(),
+            url: $(this).data('url-action'),
             success: function (result) {
-                //$('#' + currentId + ' .job-status').html("<p>HI</p>");
-                
+                //$('#' + currentId + ' .job-status').html("HI");
                 $('#' + currentId + ' .job-status').load(location.href + ' #' + currentId + ' .job-status');
             }
         })

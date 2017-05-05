@@ -41,7 +41,10 @@
                                 <input type="hidden" name="JobId" value="@Job.JobId" />
                                 <input type="submit" value="Mark Active" />
                             </form>
-                            <button type="submit" class="btn btn-success">Mark Complete</button>
+                            <form class="mark-complete-form" data-url-action='@Url.Action("SetCompleteTrue", "Jobs")'>
+                                <input type="hidden" name="JobId" value="@Job.JobId" />
+                                <input type="submit" value="Mark Complete" />
+                            </form>
                         </td>
                     </tr>
 

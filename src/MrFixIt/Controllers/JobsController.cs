@@ -53,11 +53,23 @@ namespace MrFixIt.Controllers
             return Content("");
         }
 
+        //Update IsPending value
         [HttpPost]
         public IActionResult SetPendingTrue(int JobId)
         {
             var thisJob = db.Jobs.FirstOrDefault(j => j.JobId == JobId);
             thisJob.IsPending = true;
+            db.Entry(thisJob).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(thisJob);
+        }
+
+        //Updates IsCompleted value
+        [HttpPost]
+        public IActionResult SetCompleteTrue(int JobId)
+        {
+            var thisJob = db.Jobs.FirstOrDefault(j => j.JobId == JobId);
+            thisJob.IsCompleted = true;
             db.Entry(thisJob).State = EntityState.Modified;
             db.SaveChanges();
             return Json(thisJob);
