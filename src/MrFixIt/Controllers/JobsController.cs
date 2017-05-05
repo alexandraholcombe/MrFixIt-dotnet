@@ -54,9 +54,9 @@ namespace MrFixIt.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetPendingTrue(int id)
+        public IActionResult SetPendingTrue(int JobId)
         {
-            var thisJob = db.Jobs.FirstOrDefault(j => j.JobId == id);
+            var thisJob = db.Jobs.FirstOrDefault(j => j.JobId == JobId);
             thisJob.IsPending = true;
             db.Entry(thisJob).State = EntityState.Modified;
             db.SaveChanges();

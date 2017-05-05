@@ -37,17 +37,15 @@ $(document).ready(function () {
     //submits IsPending to db
     $(".mark-active-form").submit(function (e) {
         e.preventDefault;
-        var currentId = $(this).parent().parent().parent().attr('id');
-        console.log(currentId);
+        debugger;
+        var currentId = $(this).parent().parent().attr('id');
         $.ajax({
             type: "POST",
             dataType: 'json',
-            data: {
-                id: $("input[name='JobId']").val()
-            },
+            data: $(this).serialize(),
             url: $(this).data('url-action'),
-            complete: function (result) {
-                $('#' + currentId + '.job-status').html("HI");
+            success: function (result) {
+                $('#' + currentId + ' .job-status').html("<p>HI</p>");
             }
         })
     })
