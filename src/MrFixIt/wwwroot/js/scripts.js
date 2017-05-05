@@ -33,4 +33,22 @@ $(document).ready(function () {
 
         })
     })
+
+    //submits IsPending to db
+    $(".mark-active-form").submit(function (e) {
+        e.preventDefault;
+        var currentId = $(this).parent().parent().parent().attr('id');
+        console.log(currentId);
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: {
+                id: $("input[name='JobId']").val()
+            },
+            url: $(this).data('url-action'),
+            complete: function (result) {
+                $('#' + currentId + '.job-status').html("HI");
+            }
+        })
+    })
 });

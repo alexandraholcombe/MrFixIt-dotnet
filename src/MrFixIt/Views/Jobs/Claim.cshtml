@@ -11,14 +11,6 @@
         <input type="hidden" value="@Model.Title" />
         <input type="submit" value="Claim This Job" />
     </form>
-    @*@using (Html.BeginForm(FormMethod.Post, new { @class = "this-class" }))
-    {
-        @Html.HiddenFor(model => model.JobId)
-        @Html.HiddenFor(model => model.Title)
-
-        <h4>@Model.Title</h4>
-        <input type="submit" value="Claim This Job" />
-    }*@
     <p>@Html.ActionLink("Back to list", "Index")</p>
 
 </div>

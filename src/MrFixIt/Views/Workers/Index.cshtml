@@ -6,19 +6,53 @@
 
     <div class="text-center">
         <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
+        </div>
+        <div>
         <h3>Your Current Jobs:</h3>
-        @foreach (var Job in Model.Jobs)
-        {
-            <h5>@Job.Title</h5>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Job in Model.Jobs)
+                {
+                    <tr id=@Job.JobId >
+                        <td>@Job.Title</td>
+                        <td class="job-status">
+                            @if (@Job.IsCompleted)
+                            {
+                                <p>Complete</p>
+                            }
+                            else if (@Job.IsPending)
+                            {
+                                <p>Active</p>
+                            }
+                            else
+                            {
+                                <p>Queued</p>
+                            }
+                        </td>
+                        <td>
+                            <form class="mark-active-form" data-url-action='@Url.Action("SetPendingTrue", "Jobs")'>
+                                <input type="hidden" name="JobId" value="@Job.JobId" />
+                                <input type="submit" value="Mark Active" />
+                            </form>
+                            <button type="submit" class="btn btn-success">Mark Complete</button>
+                        </td>
+                    </tr>
 
-        }
+                }
+
+            </tbody>
+        </table>
+
         @if (Model.IsAvailable)
         {
             <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
-        }
-        else
-        {
-            <p>You are already assigned to a job.</p>
         }
     </div>
 }
