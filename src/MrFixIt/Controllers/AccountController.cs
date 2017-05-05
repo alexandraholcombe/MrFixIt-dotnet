@@ -51,16 +51,20 @@ namespace MrFixIt.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email };
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                var user = new ApplicationUser { UserName = model.Email };
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         //returns login page
@@ -68,7 +72,7 @@ namespace MrFixIt.Controllers
         {
             return View();
         }
-        
+
         //submits login info, if correct redirects to index, if wrong returns login page
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)

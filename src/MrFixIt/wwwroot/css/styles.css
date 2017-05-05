@@ -4,16 +4,16 @@
 }
 
 /*LOGIN PAGE*/
-.login-box {
+.form-box {
     width: 50%;
     margin: 0 auto;
 }
 
-.login-box h2 {
+.form-box h2 {
     text-align: center;
 }
 
-.login-box .btn {
+.form-box .btn {
     display: block;
     margin: 0 auto;
 }
