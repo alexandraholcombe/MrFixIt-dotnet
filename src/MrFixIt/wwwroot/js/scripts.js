@@ -28,7 +28,7 @@ $(document).ready(function () {
             url: $(this).data('url-action'),
             complete: function (result) {
                 var resultMessage = "<p>You have claimed this job.</p>";
-                $('#' + currentId + '.result').html(resultMessage);
+                $('.job-form').html(resultMessage);
             }
 
         })
