@@ -177,11 +177,11 @@ namespace MrFixIt.Migrations
                     b.Property<int>("JobId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Completed");
-
                     b.Property<string>("Description");
 
-                    b.Property<bool>("Pending");
+                    b.Property<bool>("IsCompleted");
+
+                    b.Property<bool>("IsPending");
 
                     b.Property<string>("Title");
 
@@ -199,9 +199,9 @@ namespace MrFixIt.Migrations
                     b.Property<int>("WorkerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Avaliable");
-
                     b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsAvailable");
 
                     b.Property<string>("LastName");
 

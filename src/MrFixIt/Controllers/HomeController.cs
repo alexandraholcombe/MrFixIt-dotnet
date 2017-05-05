@@ -5,15 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace MrFixIt.Controllers
 {
     public class HomeController : Controller
     {
         private MrFixItContext db = new MrFixItContext();
 
-        // GET: /<controller>/
+        // If current user is signed in, returns index with username
+        //Currently only visible by directly typing in route
         public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)

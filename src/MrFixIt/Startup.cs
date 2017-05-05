@@ -51,6 +51,7 @@ namespace MrFixIt
             app.UseIdentity();
             app.UseMvc(routes =>
             {
+                //Current default route is account index, VERY FUNNY JOHN
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Account}/{action=Index}/{id?}");

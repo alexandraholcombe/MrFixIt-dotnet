@@ -28,11 +28,7 @@ namespace MrFixIt.Controllers
             _db = db;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
+        //Shows registered user if user is signed in
         public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -46,12 +42,13 @@ namespace MrFixIt.Controllers
             }
         }
 
-
+        //returns register view
         public IActionResult Register()
         {
             return View();
         }
 
+        //creates new user, saves to db
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -67,11 +64,13 @@ namespace MrFixIt.Controllers
             }
         }
 
+        //returns login page
         public IActionResult Login()
         {
             return View();
         }
-
+        
+        //submits login info, if correct redirects to index, if wrong returns login page
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -86,6 +85,7 @@ namespace MrFixIt.Controllers
             }
         }
 
+        //Logs current user off
         [HttpGet]
         public async Task<IActionResult> LogOff()
         {

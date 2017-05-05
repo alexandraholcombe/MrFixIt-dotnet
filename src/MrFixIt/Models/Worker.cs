@@ -15,14 +15,20 @@ namespace MrFixIt.Models
         public int WorkerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool Avaliable { get; set; }
-        public string UserName { get; set; }
+
+        //Is worker available? (not in use)
+        //Worker should only be able to work on one job at a time
+        public bool IsAvailable { get; set; }
+
         //this comes from Identity.User
+        public string UserName { get; set; }
+
+        //list of jobs associated with worker
         public virtual ICollection<Job> Jobs { get; set; }
 
         public Worker()
         {
-            Avaliable = true;
+            IsAvailable = true;
         }
 
     }

@@ -14,17 +14,19 @@ namespace MrFixIt.Controllers
     {
         private MrFixItContext db = new MrFixItContext();
 
-        // GET: /<controller>/
+        //returns list of all jobs on index page
         public IActionResult Index()
         {
             return View(db.Jobs.Include(i => i.Worker).ToList());
         }
 
+        //returns create view
         public IActionResult Create()
         {
             return View();
         }
 
+        //Adds job to db
         [HttpPost]
         public IActionResult Create(Job job)
         {
@@ -33,12 +35,14 @@ namespace MrFixIt.Controllers
             return RedirectToAction("Index");
         }
 
+        //Claim action takes JobID input, returns that job on claim page
         public IActionResult Claim(int id)
         {
-            var thisItem = db.Jobs.FirstOrDefault(items => items.JobId == id);
-            return View(thisItem);
+            var thisJob = db.Jobs.FirstOrDefault(items => items.JobId == id);
+            return View(thisJob);
         }
 
+        //adds worker to local job object, saves changes to db
         [HttpPost]
         public IActionResult Claim(Job job)
         {

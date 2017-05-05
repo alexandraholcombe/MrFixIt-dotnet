@@ -8,8 +8,8 @@ using MrFixIt.Models;
 namespace MrFixIt.Migrations
 {
     [DbContext(typeof(MrFixItContext))]
-    [Migration("20161206233149_Initial")]
-    partial class Initial
+    [Migration("20170505170802_ChangeBooleansToIs")]
+    partial class ChangeBooleansToIs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -178,11 +178,11 @@ namespace MrFixIt.Migrations
                     b.Property<int>("JobId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Completed");
-
                     b.Property<string>("Description");
 
-                    b.Property<bool>("Pending");
+                    b.Property<bool>("IsCompleted");
+
+                    b.Property<bool>("IsPending");
 
                     b.Property<string>("Title");
 
@@ -200,9 +200,9 @@ namespace MrFixIt.Migrations
                     b.Property<int>("WorkerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Available");
-
                     b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsAvailable");
 
                     b.Property<string>("LastName");
 
