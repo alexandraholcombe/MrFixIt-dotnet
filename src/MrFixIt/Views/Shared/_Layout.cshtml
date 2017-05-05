@@ -39,13 +39,22 @@
                         </li>
                     }
 
+
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Sign in", "Login", "Account")</li>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>
+                            <a>@User.Identity.Name</a>
+                        </li>
                         <li>
                             @Html.ActionLink("Log Out", "LogOff", "Account")
                         </li>
                     }
-
                 </ul>
             </div>
         </div>
