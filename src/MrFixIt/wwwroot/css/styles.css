@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Alegreya+SC:700,900');
+
+body {
     padding-top: 70px;
     color: navy;
 }
@@ -12,12 +14,24 @@
 .jumbotron {
     margin: 0;
     margin-top: -20px;
+    padding: 40px;
     background-image: url(https://images.pexels.com/photos/172133/pexels-photo-172133.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: center;
     min-height: 400px;
+    position: relative;
 }
+
+    .jumbotron h1 {
+        position: absolute;
+        bottom: 0;
+        font-family: "Alegreya SC", sans-serif;
+        font-size: 80px;
+        color: white;
+        right: 10%;
+        text-shadow: 0px 0px 50px 100px rgba(0, 0, 0, 1);
+    }
 
 /*LOGIN PAGE*/
 .form-box {
@@ -25,14 +39,14 @@
     margin: 0 auto;
 }
 
-.form-box h2 {
-    text-align: center;
-}
+    .form-box h2 {
+        text-align: center;
+    }
 
-.form-box .btn {
-    display: block;
-    margin: 0 auto;
-}
+    .form-box .btn {
+        display: block;
+        margin: 0 auto;
+    }
 
 .not-member {
     margin-top: 20px;
