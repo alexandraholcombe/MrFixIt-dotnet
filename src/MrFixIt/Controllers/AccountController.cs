@@ -33,12 +33,11 @@ namespace MrFixIt.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var thisWorker = db.Workers.FirstOrDefault(item => item.UserName == User.Identity.Name);
-                return View(thisWorker);
+                return RedirectToAction("Index", "Workers");
             }
             else
             {
-                return View();
+                return RedirectToAction("Login", "Accounts");
             }
         }
 
@@ -74,15 +73,16 @@ namespace MrFixIt.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Workers");
-            }
-            else
-            {
+                Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Workers");
+                }
                 return View();
             }
+            return View();
         }
 
         //Logs current user off

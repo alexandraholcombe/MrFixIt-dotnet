@@ -2,3 +2,23 @@
     padding-top: 70px;
     color: navy;
 }
+
+/*LOGIN PAGE*/
+.login-box {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.login-box h2 {
+    text-align: center;
+}
+
+.login-box .btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.not-member {
+    margin-top: 20px;
+    text-align: center;
+}
