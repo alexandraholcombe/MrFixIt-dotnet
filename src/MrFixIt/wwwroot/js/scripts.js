@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     //submits IsPending to db
     $(".mark-active-form").submit(function (e) {
-        e.preventDefault;
+        e.preventDefault();
         debugger;
         var currentId = $(this).parent().parent().attr('id');
         $.ajax({
@@ -45,7 +45,9 @@ $(document).ready(function () {
             data: $(this).serialize(),
             url: $(this).data('url-action'),
             success: function (result) {
-                $('#' + currentId + ' .job-status').html("<p>HI</p>");
+                //$('#' + currentId + ' .job-status').html("<p>HI</p>");
+                
+                $('#' + currentId + ' .job-status').load(location.href + ' #' + currentId + ' .job-status');
             }
         })
     })
